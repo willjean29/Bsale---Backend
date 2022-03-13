@@ -37,6 +37,21 @@ const getAllProducts = async (keyword: string, page: number, limit: number, keyC
   }
 };
 
+const getProductById = async (id: number) => {
+  try {
+    console.log({ id });
+    const product = await Product.findByPk(id);
+    if (!product) {
+      throw new ErrorExpection("Product not found", "ERROR - PRODUCT NOT FOUND", 404);
+    }
+    return product;
+  } catch (error) {
+    console.log({ error });
+    throw new ErrorExpection("Error geting produt", "ERROR - GET PRODUCT", 500);
+  }
+};
+
 export default {
   getAllProducts,
+  getProductById,
 };

@@ -20,6 +20,22 @@ const getAllProducts = async (req: Request, res: Response, next: NextFunction) =
   }
 };
 
+const getProductById = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const product = await ProductService.getProductById(Number(id));
+    return res.json({
+      message: "Product obtained correctly",
+      data: {
+        product,
+      },
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 export default {
   getAllProducts,
+  getProductById,
 };
