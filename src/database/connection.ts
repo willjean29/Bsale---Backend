@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
-
-const connection = new Sequelize("bsale_test", "bsale_test", "bsale_test", {
-  host: "mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com",
+import env from "../config";
+const connection = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASS, {
+  host: env.DB_HOST,
   dialect: "mysql",
 });
 

@@ -40,7 +40,12 @@ const getAllProducts = async (keyword: string, page: number, limit: number, keyC
 const getProductById = async (id: number) => {
   try {
     console.log({ id });
-    const product = await Product.findByPk(id);
+    const product = await Product.findByPk(id, {
+      include: {
+        model: Category,
+        as: "categoryFull",
+      },
+    });
     if (!product) {
       throw new ErrorExpection("Product not found", "ERROR - PRODUCT NOT FOUND", 404);
     }
