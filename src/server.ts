@@ -3,15 +3,15 @@ import cors from "cors";
 import connection from "./database/connection";
 import routes from "./routes";
 import { notFound, errorHandler } from "./middlewares";
-
+import env from "./config";
 class Server {
   private app;
   private host;
   private port;
   constructor() {
     this.app = express();
-    this.port = 4000;
-    this.host = "0.0.0.0";
+    this.port = env.PORT;
+    this.host = env.HOST;
 
     // database
     this.dbConnection();
