@@ -1,0 +1,201 @@
+openapi: 3.0.2
+info:
+  title: BSALE STORE API
+  description: Documentación Bsale Store Api
+  version: "1.1"
+  contact:
+    name: Jean Osco
+    email: jean.osco@unmsm.edu.pe
+servers:
+  - url: http://localhost:4000/api/
+    description: DEV
+  - url: https://bsale-api-v1.herokuapp.com/api
+    description: PROD
+paths:
+  /categories:
+    get:
+      description: Listado de Categorias
+      tags:
+        - Categories
+      responses:
+        "200":
+          description: Respuesta OK consulta de categorias
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resCategories"
+        "404":
+          description: Categorias no encontradas
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resCustomError"
+        "500":
+          description: Error del servicio no controlado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resCustomError"
+  /products:
+    get:
+      description: Listado de productos
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Respuesta OK consulta de productos
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resProducts"
+        "404":
+          description: Productos no encontradas
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resCustomError"
+        "500":
+          description: Error del servicio no controlado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resCustomError"
+
+  /products/{id}:
+    get:
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: id # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: ID del producto
+      description: Detalle de producto obtenido por su Id
+      responses:
+        "200":
+          description: Respuesta OK de la consulta producto por id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resProductId"
+        "404":
+          description: Producto no encontradas
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resCustomError"
+        "500":
+          description: Error del servicio no controlado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/resCustomError"
+
+components:
+  schemas:
+    resCategories:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Categories obtained correctly
+        data:
+          type: object
+          properties:
+            categories:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+                  name:
+                    type: string
+                    example: bebida energetica
+    resProducts:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Products obtained correctly
+        data:
+          type: object
+          properties:
+            products:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 5
+                  name:
+                    type: string
+                    example: ENERGETICA MR BIG
+                  url_image:
+                    type: string
+                    example: https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg
+                  price:
+                    type: number
+                    example: 1490
+                  discount:
+                    type: number
+                    example: 20
+                  category:
+                    type: number
+                    example: 1
+    resProductId:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Product obtained correctly
+        data:
+          type: object
+          properties:
+            product:
+              type: object
+              properties:
+                id:
+                  type: number
+                  example: 5
+                name:
+                  type: string
+                  example: ENERGETICA MR BIG
+                url_image:
+                  type: string
+                  example: https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg
+                price:
+                  type: number
+                  example: 1490
+                discount:
+                  type: number
+                  example: 20
+                category:
+                  type: number
+                  example: 1
+                categoryFull:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      example: 1
+                    name:
+                      type: string
+                      example: bebida energetica
+    resCustomError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "Message Error"
+            code:
+              type: string
+              example: "ERROR - DETAILS ERROR"

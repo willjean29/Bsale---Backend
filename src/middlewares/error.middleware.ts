@@ -7,6 +7,7 @@ const notFound = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.log({ err, in: "final" });
   const { message, httpCode, code_message } = err as any;
   const statusCode = httpCode || res.statusCode || 500;
 

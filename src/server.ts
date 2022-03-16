@@ -1,9 +1,13 @@
 import express, { Response, Request, NextFunction } from "express";
+import path from "path";
+import swaggerUi from "swagger-ui-express";
+import YAML from "yamljs";
 import cors from "cors";
 import connection from "./database/connection";
 import routes from "./routes";
 import { notFound, errorHandler } from "./middlewares";
 import env from "./config";
+const swaggerDocument = YAML.load(path.join(__dirname, "swagger.yaml"));
 class Server {
   private app;
   private host;
@@ -40,6 +44,7 @@ class Server {
 
   routes() {
     this.app.use("/api", routes);
+    this.app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     this.app.use(notFound);
     this.app.use(errorHandler);
   }

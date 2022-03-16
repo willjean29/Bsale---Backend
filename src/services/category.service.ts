@@ -9,7 +9,8 @@ const getAllCategories = async () => {
     return categories;
   } catch (error) {
     console.log({ error });
-    throw new ErrorExpection("Error geting categories", "ERROR - GET CATEGORIES", 500);
+    // throw new ErrorExpection("Error geting categories", "ERROR - GET CATEGORIES", 500);
+    throw error;
   }
 };
 

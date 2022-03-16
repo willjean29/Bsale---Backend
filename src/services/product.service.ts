@@ -33,7 +33,8 @@ const getAllProducts = async (keyword: string, page: number, limit: number, keyC
     return { products, page, pages };
   } catch (error) {
     console.log({ error });
-    throw new ErrorExpection("Error geting produts", "ERROR - GET PRODUCTS", 500);
+    // throw new ErrorExpection("Error geting produts", "ERROR - GET PRODUCTS", 500);
+    throw error;
   }
 };
 
@@ -47,12 +48,15 @@ const getProductById = async (id: number) => {
       },
     });
     if (!product) {
+      console.log({ product });
       throw new ErrorExpection("Product not found", "ERROR - PRODUCT NOT FOUND", 404);
     }
+
     return product;
   } catch (error) {
     console.log({ error });
-    throw new ErrorExpection("Error geting produt", "ERROR - GET PRODUCT", 500);
+    // throw new ErrorExpection("Error geting produt", "ERROR - GET PRODUCT", 500);
+    throw error;
   }
 };
 
