@@ -12,7 +12,7 @@ Backend for the bsale store contains the services to provide categories, product
 
 ## Documentation
 
-- 👉 Postman : [https://documenter.getpostman.com/view/10515755/UVsJwSoA](https://documenter.getpostman.com/view/10515755/UVsJwSoA)
+- 👉 Swagger : [https://bsale-api-v1.herokuapp.com/api-doc](https://bsale-api-v1.herokuapp.com/api-doc)
 
 ## Technologies
 

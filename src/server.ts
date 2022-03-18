@@ -7,7 +7,7 @@ import connection from "./database/connection";
 import routes from "./routes";
 import { notFound, errorHandler } from "./middlewares";
 import env from "./config";
-const swaggerDocument = YAML.load(path.join(__dirname, "swagger.yaml"));
+const swaggerDocument = YAML.load(path.join(__dirname, "../swagger.yaml"));
 class Server {
   private app;
   private host;
