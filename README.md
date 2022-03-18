@@ -1,13 +1,17 @@
 # BSALE STORE API
-![image](https://user-images.githubusercontent.com/61263958/158119923-df91f25c-43f6-4c55-aeb0-0596e2d7f258.png)
+
+![image](https://user-images.githubusercontent.com/61263958/159086233-59744aad-31ec-499b-ac30-8b85b1a1cd85.png)
 
 # Description
+
 Backend for the bsale store contains the services to provide categories, products and filter searches
 
 ## Demo Website
+
 - 👉 Heroku : [https://bsale-api-v1.herokuapp.com](https://bsale-api-v1.herokuapp.com)
 
 ## Documentation
+
 - 👉 Postman : [https://documenter.getpostman.com/view/10515755/UVsJwSoA](https://documenter.getpostman.com/view/10515755/UVsJwSoA)
 
 ## Technologies
@@ -29,3 +33,12 @@ Backend for the bsale store contains the services to provide categories, product
 7. Environment Variables
 8. Typescript
 
+## Run Project
+
+```
+# Git clone https://github.com/willjean29/Bsale-Backend.git
+# Install Dependencies
+  npm install
+# Run frontend (:4000)
+  npm run dev
+```
